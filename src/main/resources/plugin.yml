@@ -2,3 +2,8 @@ name: Whereis
 version: '1.0-SNAPSHOT'
 main: com.vebbern.whereis.Whereis
 api-version: '1.21'
+commands:
+  whereis:
+    description: Show coordinates of an online player
+    usage: "/whereis <player>"
+    permission: myplugin.locate
