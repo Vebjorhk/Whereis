@@ -7,3 +7,9 @@ commands:
     description: Show coordinates of an online player
     usage: "/whereis <player>"
     permission: myplugin.locate
+    permission-message: "You do not have permission to use this command."
+
+permissions:
+  myplugin.locate:
+    description: Allows use of /whereis
+    default: true
