@@ -1,6 +1,7 @@
 package com.vebbern.whereis
 
 import org.bukkit.Bukkit
+import org.bukkit.World
 import org.bukkit.command.*
 
 class WhereisCommand : CommandExecutor, TabCompleter {
@@ -24,7 +25,15 @@ class WhereisCommand : CommandExecutor, TabCompleter {
         }
 
         val loc = target.location
-        sender.sendMessage("§a${target.name} is at ${loc.x.toInt()}, ${loc.y.toInt()}, ${loc.z.toInt()}")
+        val world = loc.world ?: return true
+
+        val worldName = when (world.environment) {
+            World.Environment.NORMAL -> "Overworld"
+            World.Environment.NETHER -> "Nether"
+            World.Environment.THE_END -> "End"
+            World.Environment.CUSTOM -> "Custom World"
+        }
+        sender.sendMessage("§a${target.name} is at ${loc.x.toInt()}, ${loc.y.toInt()}, ${loc.z.toInt()} in the $worldName")
         return true
     }
 
